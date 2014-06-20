@@ -49,7 +49,8 @@ SH
     # Install docker-sickrage
     # Contains only sickrage
     sickrage.vm.provision "shell",  inline: <<SH
-      git pull --depth=1 https://github.com/Micka33/docker-sickrage.git .
+      git clone --depth=1 https://github.com/Micka33/docker-sickrage.git
+      cd docker-sickrage
       docker build --tag micka33/sickrage .
 SH
 
