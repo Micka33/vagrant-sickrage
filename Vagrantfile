@@ -9,6 +9,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "ubuntu/trusty64"
 
+  # Multiple machines can be defined within the same project Vagrantfile
+  # using the config.vm.define method call.
   config.vm.define "sickrage" do |sickrage|
 
     # If you'd like to try the latest version of Docker:
