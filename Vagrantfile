@@ -37,6 +37,23 @@ SH
       apt-get -y install lxc-docker
 SH
 
+    # It is easiest to install Git on Linux using the preferred
+    # package manager of your Linux distribution.
+    # Debian/Ubuntu
+    # $ apt-get install git
+    sickrage.vm.provision "shell",  inline: <<SH
+      apt-get -y install git
+SH
+
+    # See https://github.com/Micka33/docker-sickrage
+    # Install docker-sickrage
+    # Contains only sickrage
+    sickrage.vm.provision "shell",  inline: <<SH
+      git pull --depth=1 https://github.com/Micka33/docker-sickrage.git .
+      docker build --tag micka33/sickrage .
+SH
+
+
   end
 
 
