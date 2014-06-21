@@ -47,21 +47,33 @@ SH
       apt-get -y install git
 SH
 
+    # See https://github.com/Micka33/docker-rtorrent
+    # Install docker-rtorrent
+    # Build the rtorrent image
+    # Run rtorrent
+    sickrage.vm.provision "shell",  inline: <<SH
+      git clone --depth=1 https://github.com/Micka33/docker-sickrage.git
+      cd docker-sickrage
+      docker build --tag micka33/rtorrent .
+      docker run --name rtorrent -d -p 0.0.0.0:63256:63256 micka33/rtorrent
+SH
+
+
+
     # See https://github.com/Micka33/docker-sickrage
     # Install docker-sickrage
-    # Contains only sickrage
     # Build the sickrage image
     # Run the sickrage container
     sickrage.vm.provision "shell",  inline: <<SH
       git clone --depth=1 https://github.com/Micka33/docker-sickrage.git
       cd docker-sickrage
       docker build --tag micka33/sickrage .
-      docker run --name sickrage -d -p 0.0.0.0:80:8081 micka33/sickrage
+      docker run --name sickrage -d -p 0.0.0.0:80:8081 --link rtorrent/rtorrent micka33/sickrage
 SH
 
 
-
     sickrage.vm.network "forwarded_port", guest: 80, host: 8080
+    sickrage.vm.network "forwarded_port", guest: 63256, host: 63256
 
   end
 
