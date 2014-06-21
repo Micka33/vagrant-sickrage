@@ -1,10 +1,7 @@
 #vagrant-sickrage
 
 
-
-A vagrant machine that contains Sickrage, configured with rtorrent.
-
-**Currently only contains sickrage, rtorrent comming soon.**
+A vagrant machine that contains Sickrage, configured with [rtorrent][1].
 
 
 ##How to get it
@@ -14,3 +11,6 @@ A vagrant machine that contains Sickrage, configured with rtorrent.
 > vagrant up
 
 ```
+
+[1]: https://github.com/Micka33/docker-rtorrent
+
